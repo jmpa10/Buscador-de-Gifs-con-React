@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   gif-app:
     build:
@@ -10,4 +8,12 @@ services:
       - '3000:3000'
     environment:
       - NODE_ENV=production
+      - VIRTUAL_HOST=marvel.alonso.servidorgp.somosdelprieto.com
+      - LETSENCRYPT_HOST=marvel.alonso.servidorgp.somosdelprieto.com
     restart: unless-stopped
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
